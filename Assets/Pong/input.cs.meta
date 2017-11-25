@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b72bd9585973aad4cadd22848e31f021
+timeCreated: 1506469073
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - iTexture: {fileID: 2800000, guid: fc677f3bbc4929e41bbea46cce6db316, type: 3}
+  - dTexture: {fileID: 2800000, guid: d6aa2335ed9178047996209fe9f65721, type: 3}
+  - mat: {fileID: 2100000, guid: edf58e0a18a9f854b8e53f554a4dc76a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
