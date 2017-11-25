@@ -41,6 +41,9 @@ public class characterController : MonoBehaviour {
         if (Input.GetKeyDown("`")) {
             Cursor.lockState = CursorLockMode.None;
         }
+        if (Input.GetKeyDown("/")) {
+            SceneChange.LoadTheLevel("Pong/MainScene");
+        }
 	}
 
     void walkThroughWalls() {
