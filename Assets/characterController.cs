@@ -7,6 +7,8 @@ public class characterController : MonoBehaviour {
     public GameObject maze;
     private CapsuleCollider col;
     public BoxCollider[] cols;
+    public AudioSource walk;
+
     Vector3 startPos;
 	// Use this for initialization
 	void Start () {
@@ -18,9 +20,16 @@ public class characterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         float translation = Input.GetAxis("Vertical") * speed;
         float straffe = Input.GetAxis("Horizontal") * speed;
 
+        if (translation != 0 || straffe != 0) {
+            walk.mute = false;
+        }
+        else {
+            walk.mute = true;
+        }
         translation *= Time.deltaTime;
         straffe *= Time.deltaTime;
 

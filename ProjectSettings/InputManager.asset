@@ -73,8 +73,8 @@ InputManager:
     m_Name: Fire3
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: f
-    positiveButton: 
+    negativeButton: 
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -89,8 +89,8 @@ InputManager:
     m_Name: Fire4
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: g
-    positiveButton: 
+    negativeButton: 
+    positiveButton: g
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
