@@ -11,8 +11,7 @@ public class addFog : MonoBehaviour {
     public Renderer rend2;
     bool foggy = false;
     bool isDay = true;
-    bool isMusic = true;
-    bool dMusic = true, nMusic = false;
+
     public AudioSource Day, Night;
 
     // Use this for initialization
@@ -31,16 +30,26 @@ public class addFog : MonoBehaviour {
             ToggleDay();
         }
 
-        BGM();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Day.mute = !Day.mute;
+            Night.mute = !Night.mute;
+        }
+
     }
 
     void changeShader() {
         if (foggy) {
+            Day.volume = 0.5f;
+            Night.volume = 1.0f;
+            Day.enabled = true;
+            Night.enabled = false;
             foreach (Renderer rend in rend1) {
                 rend.material.shader = shader1;
             }
         }
         else {
+            Day.volume = 0.25f;
+            Night.volume = 0.5f;
             foreach (Renderer rend in rend1) {
                 rend.material.shader = shader2;
             }
@@ -52,9 +61,8 @@ public class addFog : MonoBehaviour {
     {
         if (isDay)
         {
-            dMusic = true;
-            nMusic = false;
-            //Night.mute = true;
+            Day.enabled = true;
+            Night.enabled = false;
             foreach (Renderer rend in rend1)
             {
                 rend.material.shader = shader1;
@@ -62,9 +70,8 @@ public class addFog : MonoBehaviour {
         }
         else
         {
-            dMusic = false;
-            nMusic = true;
-            //Night.mute = false;
+            Day.enabled = false;
+            Night.enabled = true;
             foreach (Renderer rend in rend1)
             {
                 rend.material.shader = shader3;
@@ -73,23 +80,4 @@ public class addFog : MonoBehaviour {
         isDay = !isDay;
     }
 
-    private void BGM() {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            isMusic = !isMusic;
-        }
-        if (isMusic) {
-            if (dMusic) {
-                Day.mute = false;
-                Night.mute = true;
-            }
-            if (nMusic) {
-                Day.mute = true;
-                Night.mute = false;
-            }
-        }
-        else {
-            Day.mute = true;
-            Night.mute = true;
-        }
-    }
 }
