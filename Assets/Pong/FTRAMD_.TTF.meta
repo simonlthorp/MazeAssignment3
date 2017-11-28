@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7d5bc7da08605904e811021c88be7651
+timeCreated: 1511645964
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Futura Md
+  fontNames:
+  - Futura Md
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

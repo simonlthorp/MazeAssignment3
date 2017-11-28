@@ -8,6 +8,8 @@ public class characterController : MonoBehaviour {
     public GameObject maze;
     private CapsuleCollider col;
     public BoxCollider[] cols;
+    public AudioSource walk;
+
     Vector3 startPos;
 
     public int score;
@@ -28,9 +30,16 @@ public class characterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         float translation = Input.GetAxis("Vertical") * speed;
         float straffe = Input.GetAxis("Horizontal") * speed;
 
+        if (translation != 0 || straffe != 0) {
+            walk.mute = false;
+        }
+        else {
+            walk.mute = true;
+        }
         translation *= Time.deltaTime;
         straffe *= Time.deltaTime;
 
@@ -55,6 +64,9 @@ public class characterController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Fire();
+        }
+        if (Input.GetKeyDown("/")) {
+            SceneChange.LoadTheLevel("Pong/MainScene");
         }
 	}
 
