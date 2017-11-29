@@ -71,14 +71,14 @@ public class characterController : MonoBehaviour {
             SceneChange.LoadTheLevel("Pong/MainScene");
         }
 
-        //save game with F5 key
-        if (Input.GetKeyDown(KeyCode.F5))
+        //save game with F5 key or right stick down
+        if (Input.GetButtonDown("Save"))
         {
             SaveState();
         }
 
         //Load game with F8 key
-        if (Input.GetKeyDown(KeyCode.F8))
+        if (Input.GetButtonDown("Load"))
         {
             LoadState();
         }
