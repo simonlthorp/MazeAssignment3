@@ -21,16 +21,16 @@ public class addFog : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetAxisRaw("Fire3") != 0) {
+        if (Input.GetButtonDown("Fire3")) {
             changeShader();
         }
 
-        if(Input.GetAxisRaw("Fire4") != 0)
+        if(Input.GetButtonDown("Fire4"))
         {
             ToggleDay();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetButtonDown("Mute")) {
             Day.mute = !Day.mute;
             Night.mute = !Night.mute;
         }
