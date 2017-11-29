@@ -45,15 +45,16 @@ public class characterController : MonoBehaviour {
 
         transform.Translate(straffe, 0, translation);
 
-        if (Input.GetAxisRaw("Fire1") != 0) {
+        if (Input.GetButtonDown("Fire1")) {
             walkThroughWalls();
         }
 
-        if (Input.GetAxisRaw("Fire2") != 0) {
+        //return to start position
+        if (Input.GetButtonDown("Fire2")) {
             transform.position = startPos;
         }
 
-        if (Input.GetAxisRaw("Cancel") != 0) {
+        if (Input.GetButtonDown("Cancel")) {
                 Application.Quit();
         }
 
@@ -61,13 +62,27 @@ public class characterController : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown("Throw"))
         {
             Fire();
         }
+
         if (Input.GetKeyDown("/")) {
             SceneChange.LoadTheLevel("Pong/MainScene");
         }
+
+        //save game with F5 key
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SaveState();
+        }
+
+        //Load game with F8 key
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            LoadState();
+        }
+
 	}
 
     void walkThroughWalls() {
@@ -91,4 +106,47 @@ public class characterController : MonoBehaviour {
         Debug.Log("Score: " + score);
         scoreText.text = "Hits: " + score;
     }
+
+    //Saves data
+    void SaveState()
+    {
+        //save score
+        PlayerPrefs.SetInt("score", score);
+
+        //save player location
+        PlayerPrefs.SetFloat("playerX", this.transform.position.x);
+        PlayerPrefs.SetFloat("playerY", this.transform.position.y);
+
+        //save enemy location
+        PlayerPrefs.SetFloat("enemyX", GameObject.Find("dude").transform.position.x);
+        PlayerPrefs.SetFloat("enemyY", GameObject.Find("dude").transform.position.y);
+
+    }
+
+    //Loads saved data
+    void LoadState()
+    {
+
+        //Get saved score
+        score = PlayerPrefs.GetInt("score");
+
+        //Get saved player location
+        float playerX = PlayerPrefs.GetFloat("playerX");
+        float playerY = PlayerPrefs.GetFloat("playerY");
+
+        //Get saved enemy location
+        float enemyX = PlayerPrefs.GetFloat("enemyX");
+        float enemyY = PlayerPrefs.GetFloat("enemyY");
+
+        //set UI score
+        scoreText.text = "Hits: " + score;
+
+        //set player location
+        transform.position = new Vector3(playerX, playerY);
+
+        //set enemy location
+        GameObject.Find("dude").transform.position = new Vector3(enemyX, enemyY);
+
+    }
+
 }
