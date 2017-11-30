@@ -6,11 +6,13 @@ public class addFog : MonoBehaviour {
     public Shader shader1;
     public Shader shader2;
     public Shader shader3;
+    public Shader shader4;
     public GameObject maze;
     public Renderer[] rend1;
     public Renderer rend2;
     bool foggy = false;
     bool isDay = true;
+    bool flashlightOn = false;
 
     public AudioSource Day, Night;
 
@@ -33,6 +35,11 @@ public class addFog : MonoBehaviour {
         if (Input.GetButtonDown("Mute")) {
             Day.mute = !Day.mute;
             Night.mute = !Night.mute;
+        }
+
+        if (Input.GetButtonDown("Flashlight"))
+        {
+            ToggleFlashlight();
         }
 
     }
@@ -78,6 +85,37 @@ public class addFog : MonoBehaviour {
             }
         }
         isDay = !isDay;
+    }
+
+    private void ToggleFlashlight()
+    {
+
+        if (!flashlightOn)
+        {
+            foreach(Renderer rend in rend1)
+            {
+                rend.material.shader = shader4;
+            }
+        }
+        else
+        {
+            if (isDay)
+            {
+                foreach (Renderer rend in rend1)
+                {
+                    rend.material.shader = shader1;
+                }
+            }
+            else // is night
+            {
+                foreach (Renderer rend in rend1)
+                {
+                    rend.material.shader = shader3;
+                }
+            }
+        }
+
+        flashlightOn = !flashlightOn;
     }
 
 }
